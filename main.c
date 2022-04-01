@@ -1,14 +1,30 @@
 #include <stdio.h>
+#include <malloc.h>
+#include <assert.h>
+#include <stdbool.h>
+#include <string.h>
 
-#include "stack.h"
+#include "queue.h"
 
 void main()
 {
-	/* */
-	struct stack *s;
-	s = create_stack();
+	char *str = "hello world";
 
-  /* other test code */
+	struct queue q;
+	int i, v;
+	int len;
 
-	free(s);
+	len = strlen(str);
+
+	init_queue(&q);
+
+	for (i = 0; i < len; i++) {
+		enter(&q, str[i]);
+	}
+
+	for (i = 0; i < len; i++) {
+		v = leave(&q);
+		printf("%c, ", v);
+	}
+
 }
