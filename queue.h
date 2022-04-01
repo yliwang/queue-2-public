@@ -2,19 +2,15 @@
 
 #include "defs.h"
 
-struct node
-{
-	T item;
-	struct node *next;
-};
+#include "list.h"
+
 
 struct queue
 {
-	struct node *front_node;
-	struct node *rear_node;
+	struct singly_linked_list ssl;	
 };
 
-struct node *create_node(T e);
+struct queue *create_queue();
 struct queue *init_queue(struct queue *q);
 struct queue *enter(struct queue *q, T e);
 T leave(struct queue *q);
