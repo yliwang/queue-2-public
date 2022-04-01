@@ -23,3 +23,7 @@ struct queue *create_queue()
 	return init_queue( q );
 }
 
+void uninit_queue( struct queue *q )
+{
+	free_list( q->sll.head );
+}
