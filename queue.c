@@ -6,56 +6,20 @@
 
 #include "queue.h"
 
-struct node *create_node(T e)
-{
-	struct node *p = (struct node *)malloc(sizeof(struct node));
-
-	p->item = e;
-	p->next = NULL;
-
-	return p;
-}
 
 struct queue *init_queue(struct queue *q)
 {
-	q->front_node = NULL;
-	q->rear_node = NULL;
-
+	init_list( &q->sll );
+	
 	return q;
 }
 
-struct queue *enter(struct queue *q, T e)
+struct queue *create_queue()
 {
-	struct node *p = create_node(e);
-
-	if (q->rear_node == NULL) {
-		q->rear_node = p;
-		q->front_node = p;
-	}
-	else {
-		q->rear_node->next = p;
-		q->rear_node = p;
-	}
-
-	return q;
-}
-
-T leave(struct queue *q)
-{
-	T v;
-	struct node *p;
-
-	assert(q->front_node != NULL);
-
-	v = q->front_node->item;
-
-	p = q->front_node->next;
-
-	free(q->front_node);
-
-	q->front_node = p;
-	if (p == NULL) q->rear_node = NULL;
-
-	return v;
+	struct queue *q;
+	
+	q = (struct queue *)malloc( sizeof(struct queue) );
+	
+	return init_queue( q );
 }
 
