@@ -12,6 +12,8 @@ struct queue
 
 struct queue *create_queue();
 struct queue *init_queue(struct queue *q);
+void uninit_queue(struct queue *q );
+
 struct queue *enter(struct queue *q, T e);
 T leave(struct queue *q);
 
